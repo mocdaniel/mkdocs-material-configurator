@@ -1,44 +1,48 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { YamlPreview } from "@/components/yaml-preview"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Eye } from "lucide-react"
-import { useMobile } from "@/hooks/use-mobile"
-import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/sidebar"
-import { ConfiguratorSidebar } from "@/components/configurator-sidebar"
-import { BasicSection } from "@/components/sections/basic-section"
-import { AppearanceColorsSection } from "@/components/sections/appearance-colors-section"
-import { AppearanceFontsSection } from "@/components/sections/appearance-fonts-section"
-import { AppearanceIconsSection } from "@/components/sections/appearance-icons-section"
-import { LocalizationSection } from "@/components/sections/localization-section"
-import { NavigationSection } from "@/components/sections/navigation-section"
-import { PrivacySection } from "@/components/sections/privacy-section"
-import { CookieConsentSection } from "@/components/sections/cookie-consent-section"
-import type { MkDocsConfig } from "@/types/mkdocs-config"
+import { useState } from "react";
+import { YamlPreview } from "@/components/yaml-preview";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Eye } from "lucide-react";
+import { useMobile } from "@/hooks/use-mobile";
+import {
+  SidebarProvider,
+  SidebarInset,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { ConfiguratorSidebar } from "@/components/configurator-sidebar";
+import { BasicSection } from "@/components/sections/basic-section";
+import { AppearanceColorsSection } from "@/components/sections/appearance-colors-section";
+import { AppearanceFontsSection } from "@/components/sections/appearance-fonts-section";
+import { AppearanceIconsSection } from "@/components/sections/appearance-icons-section";
+import { LocalizationSection } from "@/components/sections/localization-section";
+import { NavigationSection } from "@/components/sections/navigation-section";
+import { PrivacySection } from "@/components/sections/privacy-section";
+import { CookieConsentSection } from "@/components/sections/cookie-consent-section";
+import type { MkDocsConfig } from "@/types/mkdocs-config";
 // Import the SearchSection component
-import { SearchSection } from "@/components/sections/search-section"
+import { SearchSection } from "@/components/sections/search-section";
 // Import the AnalyticsSection component at the top
-import { AnalyticsSection } from "@/components/sections/analytics-section"
+import { AnalyticsSection } from "@/components/sections/analytics-section";
 // Import the SocialCardSection component
-import { SocialCardSection } from "@/components/sections/social-card-section"
+import { SocialCardSection } from "@/components/sections/social-card-section";
 // Import the BlogSection component at the top
-import { BlogSection } from "@/components/sections/blog-section"
+import { BlogSection } from "@/components/sections/blog-section";
 // Import the TagsSection component
-import { TagsSection } from "@/components/sections/tags-section"
+import { TagsSection } from "@/components/sections/tags-section";
 // Import the VersioningSection component
-import { VersioningSection } from "@/components/sections/versioning-section"
+import { VersioningSection } from "@/components/sections/versioning-section";
 // Add the import for the HeaderFooterSection component
-import { HeaderFooterSection } from "@/components/sections/header-footer-section"
+import { HeaderFooterSection } from "@/components/sections/header-footer-section";
 // Add the import for the GitRepoSection component at the top
-import { GitRepoSection } from "@/components/sections/git-repo-section"
+import { GitRepoSection } from "@/components/sections/git-repo-section";
 // Import the FAQ component
-import { FAQ } from "@/components/faq"
+import { FAQ } from "@/components/faq";
 // Import the Changelog component
-import { Changelog } from "@/components/changelog"
+import { Changelog } from "@/components/changelog";
 // Import the BuyMeCoffee component
-import { BuyMeCoffee } from "@/components/buy-me-coffee"
+import { BuyMeCoffee } from "@/components/buy-me-coffee";
 
 // Update the ConfigSectionType to include "changelog"
 export type ConfigSectionType =
@@ -59,11 +63,12 @@ export type ConfigSectionType =
   | "header-footer"
   | "git-repo"
   | "faq"
-  | "changelog"
+  | "changelog";
 
 export function ConfiguratorLayout() {
-  const isMobile = useMobile()
-  const [activeSection, setActiveSection] = useState<ConfigSectionType>("basic")
+  const isMobile = useMobile();
+  const [activeSection, setActiveSection] =
+    useState<ConfigSectionType>("basic");
   const [config, setConfig] = useState<MkDocsConfig>({
     site_name: "My MkDocs Site",
     theme: {
@@ -102,71 +107,105 @@ export function ConfiguratorLayout() {
       //   description: "We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better."
       // }
     },
-  })
+  });
 
   const handleConfigChange = (newConfig: MkDocsConfig) => {
-    setConfig(newConfig)
-  }
+    setConfig(newConfig);
+  };
 
   // Update the renderActiveSection function to handle the "changelog" section
   const renderActiveSection = () => {
     switch (activeSection) {
       case "basic":
-        return <BasicSection config={config} onChange={handleConfigChange} />
+        return <BasicSection config={config} onChange={handleConfigChange} />;
       case "colors":
-        return <AppearanceColorsSection config={config} onChange={handleConfigChange} />
+        return (
+          <AppearanceColorsSection
+            config={config}
+            onChange={handleConfigChange}
+          />
+        );
       case "fonts":
-        return <AppearanceFontsSection config={config} onChange={handleConfigChange} />
+        return (
+          <AppearanceFontsSection
+            config={config}
+            onChange={handleConfigChange}
+          />
+        );
       case "icons":
-        return <AppearanceIconsSection config={config} onChange={handleConfigChange} />
+        return (
+          <AppearanceIconsSection
+            config={config}
+            onChange={handleConfigChange}
+          />
+        );
       case "localization":
-        return <LocalizationSection config={config} onChange={handleConfigChange} />
+        return (
+          <LocalizationSection config={config} onChange={handleConfigChange} />
+        );
       case "navigation":
-        return <NavigationSection config={config} onChange={handleConfigChange} />
+        return (
+          <NavigationSection config={config} onChange={handleConfigChange} />
+        );
       case "privacy":
-        return <PrivacySection config={config} onChange={handleConfigChange} />
+        return <PrivacySection config={config} onChange={handleConfigChange} />;
       case "cookie-consent":
-        return <CookieConsentSection config={config} onChange={handleConfigChange} />
+        return (
+          <CookieConsentSection config={config} onChange={handleConfigChange} />
+        );
       case "search":
-        return <SearchSection config={config} onChange={handleConfigChange} />
+        return <SearchSection config={config} onChange={handleConfigChange} />;
       case "analytics":
-        return <AnalyticsSection config={config} onChange={handleConfigChange} />
+        return (
+          <AnalyticsSection config={config} onChange={handleConfigChange} />
+        );
       case "social-cards":
-        return <SocialCardSection config={config} onChange={handleConfigChange} />
+        return (
+          <SocialCardSection config={config} onChange={handleConfigChange} />
+        );
       case "blog":
-        return <BlogSection config={config} onChange={handleConfigChange} />
+        return <BlogSection config={config} onChange={handleConfigChange} />;
       case "tags":
-        return <TagsSection config={config} onChange={handleConfigChange} />
+        return <TagsSection config={config} onChange={handleConfigChange} />;
       case "versioning":
-        return <VersioningSection config={config} onChange={handleConfigChange} />
+        return (
+          <VersioningSection config={config} onChange={handleConfigChange} />
+        );
       case "header-footer":
-        return <HeaderFooterSection config={config} onChange={handleConfigChange} />
+        return (
+          <HeaderFooterSection config={config} onChange={handleConfigChange} />
+        );
       case "git-repo":
-        return <GitRepoSection config={config} onChange={handleConfigChange} />
+        return <GitRepoSection config={config} onChange={handleConfigChange} />;
       case "faq":
-        return <FAQ />
+        return <FAQ />;
       case "changelog":
-        return <Changelog />
+        return <Changelog />;
       default:
-        return <BasicSection config={config} onChange={handleConfigChange} />
+        return <BasicSection config={config} onChange={handleConfigChange} />;
     }
-  }
+  };
 
   return (
     <SidebarProvider>
-      <ConfiguratorSidebar activeSection={activeSection} onSectionChange={setActiveSection} />
+      <ConfiguratorSidebar
+        activeSection={activeSection}
+        onSectionChange={setActiveSection}
+      />
       <SidebarInset>
         <div className="container mx-auto p-4">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2">
               <SidebarTrigger className="md:hidden" />
-              <h1 className="text-3xl font-bold">Material for MkDocs Configurator</h1>
+              <h1 className="text-3xl font-bold">
+                Material for MkDocs Configurator
+              </h1>
             </div>
             {!isMobile && <BuyMeCoffee />}
           </div>
 
           <div className="flex flex-col lg:flex-row gap-6">
-            <div className="w-full lg:w-1/2">{renderActiveSection()}</div>
+            <div className="w-full 2xl:w-1/2">{renderActiveSection()}</div>
 
             {activeSection !== "faq" && activeSection !== "changelog" ? (
               isMobile ? (
@@ -199,6 +238,5 @@ export function ConfiguratorLayout() {
       {/* Always render the BuyMeCoffee component for mobile at the root level */}
       {isMobile && <BuyMeCoffee />}
     </SidebarProvider>
-  )
+  );
 }
-
