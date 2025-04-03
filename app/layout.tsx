@@ -3,10 +3,10 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: "Material for MkDocs Configurator",
+  title: "Material for MkDocs Configurator by @mocdaniel",
   description: "Configure your documentation visually",
   openGraph: {
-    title: "Material for MkDocs Configurator",
+    title: "Material for MkDocs Configurator by @mocdaniel",
     description: "Configure your documentation visually",
     url: "https://materialconfig.dev",
     siteName: "materialconfig.dev",
