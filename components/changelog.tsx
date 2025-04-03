@@ -1,18 +1,57 @@
-"use client"
-import { Badge } from "@/components/ui/badge"
+"use client";
+import { Badge } from "@/components/ui/badge";
 
 interface ReleaseNote {
-  version: string
-  date: string
-  title: string
-  description: string
+  version: string;
+  date: string;
+  title: string;
+  description: string;
   changes: {
-    type: "added" | "changed" | "fixed" | "removed"
-    items: string[]
-  }[]
+    type: "added" | "changed" | "fixed" | "removed";
+    items: string[];
+  }[];
 }
 
 const releaseNotes: ReleaseNote[] = [
+  {
+    version: "v1.0.2-9.6.11",
+    date: "April 3, 2025",
+    title: "Support for Material for MkDocs v9.6.11",
+    description: "Bumps the supported version for Material for MkDocs.",
+    changes: [
+      {
+        type: "added",
+        items: [
+          "Added information regarding this website's author in the metadata",
+        ],
+      },
+      {
+        type: "changed",
+        items: [
+          "Bumped supported version of Material for MkDocs v9.6.10 -> v9.6.11",
+        ],
+      },
+      {
+        type: "fixed",
+        items: ["Fixed layout on notebook-sized screens"],
+      },
+    ],
+  },
+  {
+    version: "v1.0.1-9.6.10",
+    date: "March 30, 2025",
+    title: "Opengraph Update",
+    description: "Introduces Opengraph previews for social previews.",
+    changes: [
+      {
+        type: "added",
+        items: [
+          "Added Material for MkDocs favicon",
+          "Added Opengraph-related metadata and image",
+        ],
+      },
+    ],
+  },
   {
     version: "v1.0.0-9.6.10",
     date: "March 30, 2025",
@@ -44,7 +83,7 @@ const releaseNotes: ReleaseNote[] = [
       },
     ],
   },
-]
+];
 
 export function Changelog() {
   return (
@@ -52,7 +91,8 @@ export function Changelog() {
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Changelog</h2>
         <p className="text-muted-foreground">
-          Track the evolution of the Material for MkDocs Configurator with our detailed changelog.
+          Track the evolution of the Material for MkDocs Configurator with our
+          detailed changelog.
         </p>
       </div>
 
@@ -66,7 +106,9 @@ export function Changelog() {
                   {release.date}
                 </Badge>
               </div>
-              <h4 className="text-lg font-medium text-muted-foreground">{release.title}</h4>
+              <h4 className="text-lg font-medium text-muted-foreground">
+                {release.title}
+              </h4>
             </div>
 
             <p className="mb-6">{release.description}</p>
@@ -92,6 +134,5 @@ export function Changelog() {
         ))}
       </div>
     </div>
-  )
+  );
 }
-
